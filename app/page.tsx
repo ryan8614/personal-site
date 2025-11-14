@@ -1,6 +1,7 @@
 'use client'
 
 import Navbar from "./components/Navbar";
+import SiteStatus from "./components/SiteStatus";
 
 export default function Home() {
 
@@ -76,6 +77,8 @@ export default function Home() {
               Some status about this site
             </h2>
 
+            <SiteStatus />
+            
           </section>
         </div>
       </main>
