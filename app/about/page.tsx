@@ -1,157 +1,187 @@
-'use client'
+'use client';
 
-import Navbar from "../components/Navbar";
+import Slidebar from "../components/Slidebar";
 
 export default function Page() {
-
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Navbar */}
-      <Navbar />
-
-      {/* Main content */}
-      <main className="max-w-6xl mx-auto px-4 py-10 bg-background text-foreground">
-        {/* Outer container: column on small screens, row on medium and above */}
+      <main className="max-w-6xl mx-auto px-8 py-10 bg-background">
         <div className="flex flex-col md:flex-row gap-8">
-          
-          {/* Sidebar: hidden on small screens, shown from md breakpoint */}
-          <aside className="hidden md:block md:basis-1/4 md:shrink-0">
-            <div className="space-y-6">
-              
-              {/* Profile photo */}
-              <img
-                src="/images/photo.jpg" /* Replace this with your image path */
-                alt="Profile photo"
-                className="aspect-square w-full rounded-2xl object-cover border"
-              />
 
-              {/* Contact info card */}
-              <section className="rounded-2xl border p-4">
-                <h2 className="text-sm font-semibold opacity-80">Contact</h2>
-                <ul className="mt-3 space-y-2 text-sm">
-                  <li>Email: <a href="mailto:yike8614@gmail.com" className="underline underline-offset-4">yike8614@gmail.com</a></li>
-                  <li>Location: Perth, WA</li>
-                  <li>GitHub: <a href="https://github.com/ryan8614" className="underline underline-offset-4">ryan8614</a></li>
-                  <li>LinkedIn: <a href="https://www.linkedin.com/in/ryan-chang8614" className="underline underline-offset-4">/in/ryan-chang8614</a></li>
-                </ul> 
-              </section>
+          {/* Sidebar */}
+          <Slidebar />
 
-              {/* Skills pill list */}
-              <section className="rounded-2xl border p-4">
-                <h2 className="text-sm font-semibold opacity-80">Skills</h2>
-                <div className="mt-3 flex flex-wrap gap-2 text-xs">
-                  <span className="rounded-full border px-3 py-1">Next.js</span>
-                  <span className="rounded-full border px-3 py-1">Tailwind</span>
-                  <span className="rounded-full border px-3 py-1">Prisma</span>
-                  <span className="rounded-full border px-3 py-1">AWS</span>
-                  <span className="rounded-full border px-3 py-1">Python</span>
-                </div>
-              </section>
-            </div>
-          </aside>
+          {/* Main content */}
+          <section className="flex-1 min-w-0 space-y-10">
 
-          {/* Main content: full-width on small screens, 3/4 width on md and above */}
-          <section className="flex-1 min-w-0 space-y-8">
-            
-            {/* Name and intro */}
-            <header className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tight">Ryan Chang</h1>
-              <p className="opacity-80">Software Developer · Perth, WA · Open to opportunities</p>
+            {/* Title */}
+            <header className="space-y-3">
+              <h1 className="text-3xl font-bold tracking-tight">About Me</h1>
+              <p className="text-sm md:text-base opacity-80 max-w-2xl leading-relaxed">
+                I’m Ryan, a web developer and tech enthusiast who enjoys building clean, 
+                practical products — and balancing screen time with the gym, the ocean, and real life.
+              </p>
             </header>
 
-            {/* Summary */}
-            <section className="rounded-2xl border p-5">
-              <h2 className="text-lg font-semibold">Summary</h2>
-              <p className="mt-3 leading-relaxed">
-                Full-stack developer skilled in Next.js, Python and AWS, with hands-on experience delivering dynamic web platforms 
-                focused on scalability, reliability, and clean UI performance.
-              </p>
-            </section>
-
-            {/* Experience section */}
-            <section className="rounded-2xl border p-5">
-              <h2 className="text-lg font-semibold">Experience</h2>
-              <div className="mt-4 space-y-6">
-                <article>
-                  <div className="flex items-baseline justify-between gap-4">
-                    <h3 className="font-semibold">Backend Developer · Anheng Information Technology</h3>
-                    <span className="text-sm opacity-70">2022 — 2023</span>
-                  </div>
-                  <p className="mt-2 text-sm opacity-90">
-                    Django REST API + Kafka data pipeline for real-time cybersecurity event ingestion.
+            {/* Story / Journey */}
+            <section className="space-y-4">
+              <h2 className="text-xl font-semibold">My Journey</h2>
+              <div className="grid gap-6 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
+                <div className="space-y-3 text-sm md:text-base leading-relaxed">
+                  <p>
+                    I grew up in China, and during high school I spent a lot of time playing games 
+                    like PUBG and CSGO. Spending so many hours with a computer naturally made me 
+                    curious about how things worked behind the screen.
                   </p>
-                  <ul className="mt-2 list-disc pl-5 text-sm">
-                    <li>RESTful API design with Django REST Framework + drf-spectacular</li>
-                    <li>Kafka consumers streaming events into PostgreSQL</li>
-                  </ul>
-                </article>
-
-                <article>
-                  <div className="flex items-baseline justify-between gap-4">
-                    <h3 className="font-semibold">Capstone · UWA “Office Contact”</h3>
-                    <span className="text-sm opacity-70">2025</span>
-                  </div>
-                  <p className="mt-2 text-sm opacity-90">
-                    Next.js + Prisma + PostgreSQL + Vercel app syncing Excel-based contact lists & floor plans.
+                  <p>
+                    That curiosity led me to study{" "}
+                    <span className="font-medium">Information Security</span> at Hangzhou Dianzi 
+                    University, where I built a strong foundation in networks, security principles, 
+                    and programming. Over time, I realised I enjoyed not just understanding systems, 
+                    but also designing and building them from the ground up.
                   </p>
-                  <ul className="mt-2 list-disc pl-5 text-sm">
-                    <li>Handsontable front-end with mergeable cells & map overlays.</li>
-                    <li>Auth, notifications, Excel↔JSON pipelines.</li>
-                  </ul>
-                </article>
+                  <p>
+                    Now I’m in Perth, completing my{" "}
+                    <span className="font-medium">Master of Information Technology at UWA</span>, 
+                    focusing on web development and backend engineering. I’m working on projects that 
+                    combine practical problem-solving with clean, maintainable code.
+                  </p>
+                </div>
+
+                {/* Simple timeline */}
+                <div className="border-l border-gray-300 pl-4 space-y-4 text-sm">
+                  <div>
+                    <div className="text-xs uppercase tracking-wide opacity-60">
+                      High School
+                    </div>
+                    <div className="font-medium">First contact with programming</div>
+                    <p className="opacity-80">
+                      Started exploring computers, games, and basic coding. Realised tech could be more than just a hobby.
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="text-xs uppercase tracking-wide opacity-60">
+                      Bachelor – Information Security
+                    </div>
+                    <div className="font-medium">Hangzhou Dianzi University</div>
+                    <p className="opacity-80">
+                      Studied networks, security, and software fundamentals. Built a strong foundation in computer science.
+                    </p>
+                  </div>
+
+                  <div>
+                    <div className="text-xs uppercase tracking-wide opacity-60">
+                      Master – Information Technology
+                    </div>
+                    <div className="font-medium">The University of Western Australia</div>
+                    <p className="opacity-80">
+                      Moved to Perth, shifted focus towards web development, backend services, and real-world projects.
+                    </p>
+                  </div>
+                </div>
               </div>
             </section>
 
-            {/* Education section */}
-            <section className="rounded-2xl border p-5">
-              <h2 className="text-lg font-semibold">Education</h2>
-              <ul className="mt-4 space-y-6 text-sm">
+            {/* Hobbies / Life */}
+            <section className="space-y-4">
+              <h2 className="text-xl font-semibold">Life Outside the Screen</h2>
+              <p className="text-sm md:text-base opacity-80 max-w-2xl">
+                I like keeping my life balanced: writing code during the day, and recharging through 
+                movement, water, and new places whenever I can.
+              </p>
 
-                {/* Master's Degree */}
-                <li>
-                  <div className="flex items-baseline justify-between gap-4">
-                    <span>Master of Information Technology — UWA</span>
-                    <span className="opacity-70">Jul 2023 — Jun 2025</span>
-                  </div>
-                  <div className="opacity-80">GPA 6.38 / 7.0 · WAM 77.6 / 100</div>
-                  <ul className="list-disc ml-4 mt-1 opacity-80 space-y-1">
-                    <li>Core units: Python (90), OOP (86), Capstone (86)</li>
-                    <li>Awarded Global Excellence Scholarship (2023)</li>
-                  </ul>
-                </li>
+              <div className="grid gap-4 md:grid-cols-3 text-sm">
+                <div className="rounded-2xl border border-gray-200 p-4 space-y-2">
+                  <h3 className="font-semibold">Fitness</h3>
+                  <p className="opacity-80">
+                    Regular strength training and gym sessions help me keep a clear mind and stay disciplined. 
+                    I like seeing progress — both in code and in the weights I can lift.
+                  </p>
+                </div>
 
-                {/* Bachelor's Degree */}
-                <li>
-                  <div className="flex items-baseline justify-between gap-4">
-                    <span>Bachelor of Information Security — HDU</span>
-                    <span className="opacity-70">Sep 2019 — Jun 2023</span>
-                  </div>
-                  <div className="opacity-80">GPA 3.69 / 4.0 · AVG 81.9 / 100</div>
-                  <ul className="list-disc ml-4 mt-1 opacity-80 space-y-1">
-                    <li>Core units: Computer Network (89), Security Testing & Evaluation (92)</li>
-                  </ul>
-                </li>
+                <div className="rounded-2xl border border-gray-200 p-4 space-y-2">
+                  <h3 className="font-semibold">Diving & the Ocean</h3>
+                  <p className="opacity-80">
+                    I enjoy being in the water — from swimming to scuba diving. 
+                    The underwater world is a good reminder that there’s a bigger world beyond the screen.
+                  </p>
+                </div>
 
-              </ul>
+                <div className="rounded-2xl border border-gray-200 p-4 space-y-2">
+                  <h3 className="font-semibold">Games & Tech</h3>
+                  <p className="opacity-80">
+                    I like playing games and exploring new tools, frameworks, and side projects. 
+                    Many of my coding ideas start from solving small problems in daily life.
+                  </p>
+                </div>
+              </div>
             </section>
 
-            {/* Projects section */}
-            <section className="rounded-2xl border p-5">
-              <h2 className="text-lg font-semibold">Projects</h2>
-              <ul className="mt-4 space-y-3 text-sm">
-                <li>
-                  <strong>IoT Smart Doorbell</strong> — Raspberry Pi, Cloudflare Tunnel, Cloudinary, Drizzle-ORM.
-                </li>
-                <li>
-                  <strong>NovaMint</strong> — NFT marketplace on Next.js + Prisma + PostgreSQL.
-                </li>
+            {/* Travel & photos */}
+            <section className="space-y-4">
+              <h2 className="text-xl font-semibold">Places I’ve Been</h2>
+              <p className="text-sm md:text-base opacity-80 max-w-2xl">
+                Moving to Perth opened a new chapter in my life. I enjoy exploring new cities, 
+                coastlines, and cafés — and taking photos along the way.
+              </p>
+
+              <ul className="text-sm list-disc list-inside opacity-90 space-y-1">
+                <li>Perth, WA — my current base, with some of the best sunsets I’ve seen.</li>
+                <li>Hangzhou & other cities in China — where my journey with tech and study started.</li>
+                <li>Other places I’ve visited for study, travel, or to meet friends.</li>
               </ul>
+
+              {/* Photo grid – replace src with your real photos */}
+              <div className="grid gap-4 grid-cols-2 md:grid-cols-3">
+                <img
+                  src="/images/sunset.jpg"
+                  alt="Perth sunset by the river"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-gray-200"
+                />
+                <img
+                  src="/images/gym.jpg"
+                  alt="Gym or training moment"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-gray-200"
+                />
+                <img
+                  src="/images/diving.jpg"
+                  alt="Diving or ocean scene"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-gray-200"
+                />
+                <img
+                  src="/images/city.jpg"
+                  alt="City or street view"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-gray-200"
+                />
+                <img
+                  src="/images/trip.jpg"
+                  alt="My trip to Bali"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-gray-200"
+                />
+                <img
+                  src="/images/friends.jpg"
+                  alt="Moments with friends"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-gray-200"
+                />
+              </div>
+            </section>
+
+            {/* Closing */}
+            <section className="space-y-3">
+              <h2 className="text-xl font-semibold">Right Now</h2>
+              <p className="text-sm md:text-base opacity-80 max-w-2xl">
+                I’m currently focused on improving my skills as a backend and full-stack developer, 
+                working on personal projects, and preparing for the next step in my career in Australia.
+              </p>
+              <p className="text-sm md:text-base opacity-80 max-w-2xl">
+                If you’d like to chat about web development, backend systems, or just good coffee spots in Perth, 
+                feel free to reach out through email or LinkedIn.
+              </p>
             </section>
           </section>
         </div>
       </main>
-
-
     </div>
   );
 }

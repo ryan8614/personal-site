@@ -4,7 +4,6 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { Moon, Sun, Menu as MenuIcon, X } from 'lucide-react';
 
 export default function Navbar() {
 
@@ -59,7 +58,7 @@ export default function Navbar() {
                             key={l.href}
                             href={l.href}
                             data-active={active ? 'true' : 'false'}
-                            className="text-sm font-medium text-zinc-700 transition-colors hover:text-blue-600 data-[active=true]:text-blue-600"
+                            className="text-sm font-medium transition-color data-[active=true]:text-blue-600"
                         >
                             {l.label}
                         </Link>
@@ -80,6 +79,7 @@ export default function Navbar() {
                     {open ? '✖️' : '☰'}
                 </button>
             </div>
+
             {/* Mobile menu */}
             <div id="mobile-menu" className={`md:hidden border-t border-zinc-200 dark:border-zinc-800 ${open ? 'block' : 'hidden'}`}>
                 <div className="mx-auto max-w-6xl w-full px-20">
@@ -91,7 +91,7 @@ export default function Navbar() {
                             <Link
                                 href={l.href}
                                 data-active={active ? 'true' : 'false'}
-                                className="block rounded-md py-2 text-base text-inherit transition-colors hover:text-blue-600 dark:hover:text-blue-400 data-[active=true]:text-blue-600 dark:data-[active=true]:text-blue-400"
+                                className="block rounded-md py-2 text-base text-inherit transition-colors hover:text-blue-600"
                             >
                                 {l.label}
                             </Link>
