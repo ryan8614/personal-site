@@ -1,19 +1,29 @@
 // app/api/site/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { randomUUID } from 'crypto';
+import { prisma } from '@/lib/prisma';
+import { unstable_cache } from 'next/cache';
 
-export const dynamic = 'force-dynamic'; // Avoid static optimization
+const getVisitorCountCached = unstable_cache(
+  async () => {
+    try {
+      const count = await prisma.visitor.count();
+      return count;
+    } catch (err) {
+      console.error('Failed to count visitors:', err);
+      // On error, fall back to 0 so the API still responds
+      return 0;
+    }
+  },
+  ['visitor-count'],
+  {
+    revalidate: 60 * 60, // 1 hour in seconds
+  },
+);
 
 const REPO = process.env.GITHUB_REPO ?? 'ryan8614/personal-site';
 const GH = 'https://api.github.com';
 
-// Counter
-const g = globalThis as unknown as {
-    __VISITOR_COUNT__?: number;
-};
-if (typeof g.__VISITOR_COUNT__ !== 'number') {
-    g.__VISITOR_COUNT__ = 0;
-}
 // Tool: pull Github data（stars / last updated / languages）
 async function fetchGitHub() {
     const headers: Record<string, string> = {
@@ -58,43 +68,58 @@ async function fetchGitHub() {
 }
 
 export async function GET(req: NextRequest) {
+  const cookie = req.cookies.get('siteVisitorId');
+  let visitorId = cookie?.value;
+  let isNewVisitor = false;
 
-    const visitorCookie = req.cookies.get('site_visitor_id');
-    let isNewVisitor = false;
+  // 1) read cached count (Next.js server cache, at most hits DB once per hour)
+  let visitorCount = await getVisitorCountCached();
 
-    if (!visitorCookie) {
-        // New visitor
-        isNewVisitor = true;
-        g.__VISITOR_COUNT__ = (g.__VISITOR_COUNT__ ?? 0) + 1;
-    }
+  // 2) handle new visitor: increment count immediately and update cache
+  if (!visitorId) {
+    isNewVisitor = true;
+    visitorId = randomUUID();
 
-    const gh = await fetchGitHub();
-
-    // Return response
-    const res = NextResponse.json(
-        {
-            visitors: g.__VISITOR_COUNT__,
-            stars: gh.stars,
-            lastUpdated: gh.lastUpdated,
-            languages: gh.languages,
+    // asynchronously persist this new visitor to DB (do not block response)
+    prisma.visitor
+      .create({
+        data: {
+          siteVisitorId: visitorId,
         },
-        {
-            headers: {
-                'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=120',
-            },
-        },
-    );
+      })
+      .catch((err) => {
+        console.error('Failed to create visitor record:', err);
+      });
+  }
 
-    // Set visitor cookie
-    if (isNewVisitor) {
-        res.cookies.set('site_visitor_id', randomUUID(), {
-        httpOnly: true,
-        sameSite: 'lax',
-        secure: true,
-        path: '/',
-        maxAge: 60 * 60 * 24 * 365, // 1 year
-        });
-    }
+  // 3) fetch GitHub data
+  const gh = await fetchGitHub();
 
-    return res;
+  // 4) build response using cached/updated visitorCount
+  const res = NextResponse.json(
+    {
+      visitors: visitorCount,
+      stars: gh.stars,
+      lastUpdated: gh.lastUpdated,
+      languages: gh.languages,
+    },
+    {
+      headers: {
+        'Cache-Control': 'public, s-maxage=30, stale-while-revalidate=120',
+      },
+    },
+  );
+
+  // 5) set cookie for new visitor
+  if (isNewVisitor && visitorId) {
+    res.cookies.set('siteVisitorId', visitorId, {
+      httpOnly: true,
+      sameSite: 'lax',
+      secure: true,
+      path: '/',
+      maxAge: 60 * 60 * 24 * 30, // 30 days
+    });
+  }
+
+  return res;
 }

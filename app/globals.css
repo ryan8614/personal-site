@@ -15,15 +15,6 @@
   --color-surface-hover: var(--surface-hover);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #111827;     
-    --foreground: #e5e7eb;     
-    --border: #505a67;        
-    --surface-hover: #505a67;   
-  }
-}
-
 html.dark {
   --background: #111827;     
   --foreground: #e5e7eb;     

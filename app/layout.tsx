@@ -1,6 +1,7 @@
 // app/layout.tsx
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { Providers } from "@/app/providers";
 import '@/app/globals.css'
 
 export const metadata: Metadata = {
@@ -14,9 +15,9 @@ export default function RootLayout({
   children: ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="bg-background text-foreground font-sans">
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
