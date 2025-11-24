@@ -1,6 +1,6 @@
 'use client';
 
-import Slidebar from "../components/Slidebar";
+import Slidebar from "@/app/components/Slidebar";
 
 export default function Page() {
   return (
@@ -49,7 +49,7 @@ export default function Page() {
                 </div>
 
                 {/* Simple timeline */}
-                <div className="border-l border-gray-300 pl-4 space-y-4 text-sm">
+                <div className="border-l border-border pl-4 space-y-4 text-sm">
                   <div>
                     <div className="text-xs uppercase tracking-wide opacity-60">
                       High School
@@ -92,7 +92,7 @@ export default function Page() {
               </p>
 
               <div className="grid gap-4 md:grid-cols-3 text-sm">
-                <div className="rounded-2xl border border-gray-200 p-4 space-y-2">
+                <div className="rounded-2xl border border-border p-4 space-y-2">
                   <h3 className="font-semibold">Fitness</h3>
                   <p className="opacity-80">
                     Regular strength training and gym sessions help me keep a clear mind and stay disciplined. 
@@ -100,7 +100,7 @@ export default function Page() {
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-gray-200 p-4 space-y-2">
+                <div className="rounded-2xl border border-border p-4 space-y-2">
                   <h3 className="font-semibold">Diving & the Ocean</h3>
                   <p className="opacity-80">
                     I enjoy being in the water — from swimming to scuba diving. 
@@ -108,7 +108,7 @@ export default function Page() {
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-gray-200 p-4 space-y-2">
+                <div className="rounded-2xl border border-border p-4 space-y-2">
                   <h3 className="font-semibold">Games & Tech</h3>
                   <p className="opacity-80">
                     I like playing games and exploring new tools, frameworks, and side projects. 
@@ -137,32 +137,32 @@ export default function Page() {
                 <img
                   src="/images/sunset.jpg"
                   alt="Perth sunset by the river"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-gray-200"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-border"
                 />
                 <img
                   src="/images/gym.jpg"
                   alt="Gym or training moment"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-gray-200"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-border"
                 />
                 <img
                   src="/images/diving.jpg"
                   alt="Diving or ocean scene"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-gray-200"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-border"
                 />
                 <img
                   src="/images/city.jpg"
                   alt="City or street view"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-gray-200"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-border"
                 />
                 <img
                   src="/images/trip.jpg"
                   alt="My trip to Bali"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-gray-200"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-border"
                 />
                 <img
                   src="/images/friends.jpg"
                   alt="Moments with friends"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-gray-200"
+                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-border"
                 />
               </div>
             </section>

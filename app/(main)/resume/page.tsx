@@ -26,14 +26,14 @@ export default function Page() {
               <a
                 href="/resume.pdf"  
                 download
-                className="mt-2 inline-flex items-center rounded-full border border-gray-300 px-4 py-1.5 text-sm font-medium hover:bg-gray-100 transition"
+                className="mt-2 inline-flex items-center rounded-full border border-border px-4 py-1.5 text-sm font-medium hover:bg-gray-100 transition"
               >
                 Download PDF
               </a>
             </header>
 
             {/* Summary */}
-            <section className="rounded-2xl border p-5 border-gray-300 shadow-md">
+            <section className="rounded-2xl border p-5 border-border shadow-md">
               <h2 className="text-lg font-semibold">Summary</h2>
               <p className="mt-3 leading-relaxed text-sm">
                 Full-stack developer skilled in Next.js, Python and AWS, with hands-on experience 
@@ -42,7 +42,7 @@ export default function Page() {
             </section>
 
             {/* Skills section */}
-            <section className="rounded-2xl border p-5 border-gray-300 shadow-md">
+            <section className="rounded-2xl border p-5 border-border shadow-md">
               <h2 className="text-lg font-semibold">Skills</h2>
               
               <div className="mt-4 grid gap-4 md:grid-cols-3 text-sm">
@@ -79,7 +79,7 @@ export default function Page() {
             </section>
 
             {/* Experience section */}
-            <section className="rounded-2xl border p-5 border-gray-300 shadow-md">
+            <section className="rounded-2xl border p-5 border-border shadow-md">
               <h2 className="text-lg font-semibold">Experience</h2>
               <div className="mt-4 space-y-6 text-sm">
                 <article>
@@ -123,7 +123,7 @@ export default function Page() {
             </section>
 
             {/* Education section */}
-            <section className="rounded-2xl border p-5 border-gray-300 shadow-md">
+            <section className="rounded-2xl border p-5 border-border shadow-md">
               <h2 className="text-lg font-semibold">Education</h2>
               <ul className="mt-4 space-y-6 text-sm">
 
@@ -160,7 +160,7 @@ export default function Page() {
             </section>
 
             {/* Projects section */}
-            <section className="rounded-2xl border p-5 border-gray-300 shadow-md">
+            <section className="rounded-2xl border p-5 border-border shadow-md">
               <h2 className="text-lg font-semibold">Projects</h2>
 
               <div className="mt-4 space-y-6 text-sm">

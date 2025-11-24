@@ -1,7 +1,7 @@
 'use client'
 
-import SiteStatus from "./components/SiteStatus";
-import Slidebar from "./components/Slidebar";
+import SiteStatus from "@/app/components/SiteStatus";
+import Slidebar from "@/app/components/Slidebar";
 
 export default function Home() {
   return (
@@ -31,19 +31,19 @@ export default function Home() {
               <div className="flex flex-wrap gap-3 pt-2">
                 <a
                   href="/resume"
-                  className="inline-flex items-center rounded-full border border-gray-300 px-4 py-1.5 text-sm font-medium hover:bg-gray-100 transition"
+                  className="inline-flex items-center rounded-full border border-border px-4 py-1.5 text-sm hover:bg-surface-hover transition"
                 >
                   View my resume
                 </a>
                 <a
-                  href="/projects"
-                  className="inline-flex items-center rounded-full border border-gray-200 px-4 py-1.5 text-sm hover:bg-gray-50 transition"
+                  href="/projects"  
+                  className="inline-flex items-center rounded-full border border-border px-4 py-1.5 text-sm hover:bg-surface-hover transition"
                 >
                   Browse projects
                 </a>
                 <a
                   href="/about"
-                  className="inline-flex items-center rounded-full border border-gray-200 px-4 py-1.5 text-sm hover:bg-gray-50 transition"
+                  className="inline-flex items-center rounded-full border border-border px-4 py-1.5 text-sm hover:bg-surface-hover transition"
                 >
                   Learn more about me
                 </a>
@@ -88,7 +88,7 @@ export default function Home() {
               </p>
 
               <div className="grid gap-4 md:grid-cols-3 text-sm">
-                <div className="rounded-2xl border border-gray-200 p-4 space-y-2">
+                <div className="rounded-2xl border border-border p-4 space-y-2">
                   <h3 className="font-semibold text-sm">Frontend</h3>
                   <ul className="space-y-1 opacity-80">
                     <li>Next.js / React</li>
@@ -98,7 +98,7 @@ export default function Home() {
                   </ul>
                 </div>
 
-                <div className="rounded-2xl border border-gray-200 p-4 space-y-2">
+                <div className="rounded-2xl border border-border p-4 space-y-2">
                   <h3 className="font-semibold text-sm">Backend & Data</h3>
                   <ul className="space-y-1 opacity-80">
                     <li>Node.js / API design</li>
@@ -108,7 +108,7 @@ export default function Home() {
                   </ul>
                 </div>
 
-                <div className="rounded-2xl border border-gray-200 p-4 space-y-2">
+                <div className="rounded-2xl border border-border p-4 space-y-2">
                   <h3 className="font-semibold text-sm">DevOps & Cloud</h3>
                   <ul className="space-y-1 opacity-80">
                     <li>Vercel deployments</li>
@@ -132,7 +132,7 @@ export default function Home() {
             </section>
 
             {/* Call to action */}
-            <section className="space-y-3 border-t border-gray-200 pt-6">
+            <section className="space-y-3 border-t border-border pt-6">
               <h2 className="text-xl font-semibold">
                 Let’s connect
               </h2>
@@ -144,7 +144,7 @@ export default function Home() {
               <div className="flex flex-wrap gap-3">
                 <a
                   href="mailto:yike8614@gmail.com"
-                  className="inline-flex items-center rounded-full border border-gray-300 px-4 py-1.5 text-sm font-medium hover:bg-gray-100 transition"
+                  className="inline-flex items-center rounded-full border border-border px-4 py-1.5 text-sm font-medium hover:bg-surface-hover transition"
                 >
                   Email me
                 </a>
@@ -152,7 +152,7 @@ export default function Home() {
                   href="https://www.linkedin.com/in/ryan-chang8614"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-full border border-gray-200 px-4 py-1.5 text-sm font-medium hover:bg-gray-50 transition"
+                  className="inline-flex items-center rounded-full border border-border px-4 py-1.5 text-sm font-medium hover:bg-surface-hover transition"
                 >
                   Connect on LinkedIn
                 </a>

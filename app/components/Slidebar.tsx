@@ -9,7 +9,7 @@ export default function Slidebar() {
                 <img
                 src="/images/photo.jpg" /* Replace this with your image path */
                 alt="Profile photo"
-                className="aspect-square w-full rounded-2xl object-cover border border-gray-300 shadow-md"
+                className="aspect-square w-full rounded-2xl object-cover border border-border shadow-md"
                 />
             
                 <div className="flex flex-col space-y-2">
@@ -17,7 +17,7 @@ export default function Slidebar() {
                 <p className="text-sm opacity-80">Web Developer</p>
                 </div>
 
-                <hr className="border-t border-gray-300"/>
+                <hr className="border-t border-border"/>
 
                 {/* Contact info card */}
                 <section className="rounded-2xl">
@@ -30,10 +30,10 @@ export default function Slidebar() {
                 </ul> 
                 </section>
 
-                <hr className="border-t border-gray-300"/>
+                <hr className="border-t border-border"/>
 
                 {/* Skills pill list */}
-                <section className="rounded-2xl">
+                <section>
                     <h2 className="text-sm font-semibold opacity-80">Skills</h2>
                     <div className="mt-3 flex flex-wrap gap-2 text-xs">
                     <span className="rounded-full border px-3 py-1">Next.js</span>

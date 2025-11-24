@@ -42,14 +42,14 @@ export default function SiteStatus() {
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
 
-        <div className="rounded-2xl border p-3 border-gray-200 shadow-md">
+        <div className="rounded-2xl border p-3 border-border shadow-md">
           <div className="opacity-70">Visitors</div>
           <div className="text-lg font-semibold">
             {data.visitors.toLocaleString()}
           </div>
         </div>
 
-        <div className="rounded-2xl border p-3 border-gray-200 shadow-md ">
+        <div className="rounded-2xl border p-3 border-border shadow-md ">
           <div className="opacity-70">GitHub Stars</div>
           <a
             href="https://github.com/ryan8614/personal-site"
@@ -61,7 +61,7 @@ export default function SiteStatus() {
           </a>
         </div>
 
-        <div className="rounded-2xl border p-3 border-gray-200 shadow-md">
+        <div className="rounded-2xl border p-3 border-border shadow-md">
           <div className="opacity-70">Last updated</div>
           <div className="text-lg font-semibold">
             {updated.toLocaleString()}
