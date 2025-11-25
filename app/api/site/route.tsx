@@ -2,24 +2,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { randomUUID } from 'crypto';
 import { prisma } from '@/lib/prisma';
-import { unstable_cache } from 'next/cache';
-
-const getVisitorCountCached = unstable_cache(
-  async () => {
-    try {
-      const count = await prisma.visitor.count();
-      return count;
-    } catch (err) {
-      console.error('Failed to count visitors:', err);
-      // On error, fall back to 0 so the API still responds
-      return 0;
-    }
-  },
-  ['visitor-count'],
-  {
-    revalidate: 60 * 60, // 1 hour in seconds
-  },
-);
 
 const REPO = process.env.GITHUB_REPO ?? 'ryan8614/personal-site';
 const GH = 'https://api.github.com';
@@ -72,24 +54,30 @@ export async function GET(req: NextRequest) {
   let visitorId = cookie?.value;
   let isNewVisitor = false;
 
-  // 1) read cached count (Next.js server cache, at most hits DB once per hour)
-  let visitorCount = await getVisitorCountCached();
+  // 1) read current total count from the database
+  let visitorCount = 0;
+  try {
+    visitorCount = await prisma.visitor.count();
+  } catch (err) {
+    console.error('Failed to count visitors:', err);
+  }
 
-  // 2) handle new visitor: increment count immediately and update cache
+  // 2) handle new visitor: persist to DB and bump count for this response
   if (!visitorId) {
     isNewVisitor = true;
     visitorId = randomUUID();
 
-    // asynchronously persist this new visitor to DB (do not block response)
-    prisma.visitor
-      .create({
+    try {
+      await prisma.visitor.create({
         data: {
           siteVisitorId: visitorId,
         },
-      })
-      .catch((err) => {
-        console.error('Failed to create visitor record:', err);
       });
+      // reflect this new visitor in the current response
+      visitorCount += 1;
+    } catch (err) {
+      console.error('Failed to create visitor record:', err);
+    }
   }
 
   // 3) fetch GitHub data

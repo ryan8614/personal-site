@@ -16,6 +16,8 @@ export default function Slidebar() {
                         quality={100}
                         className="object-cover"
                         sizes="(min-width: 768px) 25vw, 50vw"
+                        priority
+                        loading='eager'
                     />
                 </div>
             
