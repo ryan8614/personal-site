@@ -1,16 +1,23 @@
 'use client'
 
+import Image from 'next/image'
+
 export default function Slidebar() {
     return (
         <aside className="hidden md:block md:basis-1/4 md:shrink-0">
             <div className="space-y-8 p-3">
                 
                 {/* Profile photo */}
-                <img
-                src="/images/photo.jpg" /* Replace this with your image path */
-                alt="Profile photo"
-                className="aspect-square w-full rounded-2xl object-cover border border-border shadow-md"
-                />
+                <div className="relative w-full aspect-square rounded-2xl border border-border shadow-md overflow-hidden">
+                    <Image
+                        src="/images/photo.jpg"
+                        alt="Profile photo"
+                        fill
+                        quality={100}
+                        className="object-cover"
+                        sizes="(min-width: 768px) 25vw, 50vw"
+                    />
+                </div>
             
                 <div className="flex flex-col space-y-2">
                 <h2 className="text-2xl font-bold">Ryan Chang</h2>

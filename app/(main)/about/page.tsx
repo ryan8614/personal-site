@@ -1,6 +1,7 @@
 'use client';
 
 import Slidebar from "@/app/components/Slidebar";
+import Image from "next/image";
 
 export default function Page() {
   return (
@@ -134,36 +135,31 @@ export default function Page() {
 
               {/* Photo grid – replace src with your real photos */}
               <div className="grid gap-4 grid-cols-2 md:grid-cols-3">
-                <img
-                  src="/images/sunset.jpg"
-                  alt="Perth sunset by the river"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-border"
-                />
-                <img
-                  src="/images/gym.jpg"
-                  alt="Gym or training moment"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-border"
-                />
-                <img
-                  src="/images/diving.jpg"
-                  alt="Diving or ocean scene"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-border"
-                />
-                <img
-                  src="/images/city.jpg"
-                  alt="City or street view"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-border"
-                />
-                <img
-                  src="/images/trip.jpg"
-                  alt="My trip to Bali"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-border"
-                />
-                <img
-                  src="/images/friends.jpg"
-                  alt="Moments with friends"
-                  className="aspect-[4/3] w-full rounded-2xl object-cover border border-border"
-                />
+  
+                {/* Each photo card */}
+                {[
+                  { src: "/images/sunset.jpg", alt: "Perth sunset by the river" },
+                  { src: "/images/gym.jpg", alt: "Gym or training moment" },
+                  { src: "/images/diving.jpg", alt: "Diving or ocean scene" },
+                  { src: "/images/city.jpg", alt: "City or street view" },
+                  { src: "/images/trip.jpg", alt: "My trip to Bali" },
+                  { src: "/images/friends.jpg", alt: "Moments with friends" },
+                ].map((photo) => (
+                  <div
+                    key={photo.src}
+                    className="relative w-full aspect-[4/3] rounded-2xl border border-border overflow-hidden"
+                  >
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      fill
+                      className="object-cover"
+                      quality={100}
+                      sizes="(min-width: 768px) 33vw, 50vw"
+                    />
+                  </div>
+                ))}
+
               </div>
             </section>
 
